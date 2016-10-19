@@ -43,6 +43,39 @@ export function start_appOdeal(Appodeal, _appKey, callback) {
     callback();
 }
 
+export function spaceFor_AppOdeal_Banners() {
+    const HEADER = document.querySelector("head"),
+          WRAPPER = document.createElement("style"),
+          TEMPLATE = `
+              @media screen and (max-height: 400px) {
+               .content {
+                 height: calc(100vh - 44px - 32px);
+               }
+               footer {
+                 margin-bottom: 32px;
+               }
+             }
+             @media screen and (min-height: 400px)  {
+               .content {
+                 height: calc(100vh - 44px - 50px);
+               }
+               footer {
+                 margin-bottom: 50px;
+               }
+             }
+             @media screen and (min-height: 720px)  {
+               .content {
+                 height: calc(100vh - 44px - 90px);
+               }
+               footer {
+                 margin-bottom: 90px;
+               }
+             }
+          `;
+    WRAPPER.innerHTML = TEMPLATE;
+    HEADER.appendChild(WRAPPER);
+}
+
 export const isMobile = {
     Windows: function() {
         return /IEMobile/i.test(navigator.userAgent);
